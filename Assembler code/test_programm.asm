@@ -6,27 +6,27 @@ test_programm:							# Тестовая программа
 	li s10, 0
 	li s11, 4
 	
-	addi sp sp -4		# Çàïàñàåì îäíó ÿ÷åéêó äëÿ ñîõðàíåíèÿ ra
-	sw ra (sp)			# Ñîõðàíÿåì ra
+	addi sp sp -4		# Запасаем одну ячейку для сохранения ra
+	sw ra (sp)			# Сохраняем ra
 	loopp:
 	
-		jal read_file_			# Ââîä èìåíè ôàéëà
+		jal read_file_			# Ввод имени файла
 	
 		la a0, strbuf
 		
-		jal string_processing		# Îáðàáîòêà ñ÷èòàííîé ñòðîêè
+		jal string_processing		# Обработка считанной строки
 		
 		print_or_not(t1)
 		
 		la a6, new_str
-		jal create_new_file 		# Ñîçäàíèå íîâîãî ôàéëà
+		jal create_new_file 		# Создание нового файла
 	
 		addi s10,s10,1
 		beq s10,  s11,ex
 		j loopp
 		
 	ex:
-		lw ra (sp)		# âîññòàíàâëèâàåì ra èç ñòåêà
-		addi sp sp 4	# âîññòàíàâëèâàåì âåðøèíó ñòåêà
+		lw ra (sp)		# восстанавливаем ra из стека
+		addi sp sp 4	# восстанавливаем вершину стека
 		ret
 		
