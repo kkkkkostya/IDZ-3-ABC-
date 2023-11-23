@@ -1,18 +1,18 @@
 .include "macro-lib.asm"
 
-.eqv	NAME_SIZE 256 				# Размер буфера для имени файла
-.eqv	TEXT_SIZE 4096 				# Размер буфера для текста
+.eqv	NAME_SIZE 256 				# Р Р°Р·РјРµСЂ Р±СѓС„РµСЂР° РґР»СЏ РёРјРµРЅРё С„Р°Р№Р»Р°
+.eqv	TEXT_SIZE 4096 				# Р Р°Р·РјРµСЂ Р±СѓС„РµСЂР° РґР»СЏ С‚РµРєСЃС‚Р°
 	
 		.data
 er_name_mes:    .asciz "Incorrect file name\n"
 er_read_mes:    .asciz "Incorrect read operation\n"
 
-new_str:     .space TEXT_SIZE				# Новая преобразованная строка
-file_name:      .space	NAME_SIZE		# Имячитаемого файла
-strbuf:	.space TEXT_SIZE			# Буфер для читаемого текста
-default_name: .asciz "testout.txt"      	# Имя файла по умолчанию
-file_out_name: .space	NAME_SIZE		# Имя читаемого файла
-prompt:         .asciz "Input file path: "    			 # Путь до читаемого файла
+new_str:     .space TEXT_SIZE				# РќРѕРІР°СЏ РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅРЅР°СЏ СЃС‚СЂРѕРєР°
+file_name:      .space	NAME_SIZE		# РРјСЏС‡РёС‚Р°РµРјРѕРіРѕ С„Р°Р№Р»Р°
+strbuf:	.space TEXT_SIZE			# Р‘СѓС„РµСЂ РґР»СЏ С‡РёС‚Р°РµРјРѕРіРѕ С‚РµРєСЃС‚Р°
+default_name: .asciz "testout.txt"      	# РРјСЏ С„Р°Р№Р»Р° РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
+file_out_name: .space	NAME_SIZE		# РРјСЏ С‡РёС‚Р°РµРјРѕРіРѕ С„Р°Р№Р»Р°
+prompt:         .asciz "Input file path: "    			 # РџСѓС‚СЊ РґРѕ С‡РёС‚Р°РµРјРѕРіРѕ С„Р°Р№Р»Р°
 
 .text
 .global main file_name strbuf file_out_name default_name er_name_mes er_read_mes new_str
@@ -23,16 +23,16 @@ main:
 	
 	bgtz a2, auto_test_mac
 
-	jal read_file_			# Ввод имени файла
+	jal read_file_			# Р’РІРѕРґ РёРјРµРЅРё С„Р°Р№Р»Р°
 	
 	la a0, strbuf
 	
-	jal string_processing		# Обработка считанной строки
+	jal string_processing		# РћР±СЂР°Р±РѕС‚РєР° СЃС‡РёС‚Р°РЅРЅРѕР№ СЃС‚СЂРѕРєРё
 	
 	print_or_not(t1)
 	
 	la a6, new_str
-	jal create_new_file 		# Создание нового файла
+	jal create_new_file 		# РЎРѕР·РґР°РЅРёРµ РЅРѕРІРѕРіРѕ С„Р°Р№Р»Р°
 	
 	j exit
 	
