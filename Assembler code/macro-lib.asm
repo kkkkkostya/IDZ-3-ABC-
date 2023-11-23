@@ -66,6 +66,7 @@ end:
 	j end
 ok:
 	li a2, 0
+	j end
 ok_2:
 	li a2, 1
 end:
