@@ -2,31 +2,31 @@
 
 .global test_programm
 .text
-test_programm:							# Тестовая программа
+test_programm:							# РўРµСЃС‚РѕРІР°СЏ РїСЂРѕРіСЂР°РјРјР°
 	li s10, 0
 	li s11, 4
 	
-	addi sp sp -4		# Запасаем одну ячейку для сохранения ra
-	sw ra (sp)			# Сохраняем ra
+	addi sp sp -4		# Г‡Г ГЇГ Г±Г ГҐГ¬ Г®Г¤Г­Гі ГїГ·ГҐГ©ГЄГі Г¤Г«Гї Г±Г®ГµГ°Г Г­ГҐГ­ГЁГї ra
+	sw ra (sp)			# Г‘Г®ГµГ°Г Г­ГїГҐГ¬ ra
 	loopp:
 	
-		jal read_file_			# Ввод имени файла
+		jal read_file_			# Г‚ГўГ®Г¤ ГЁГ¬ГҐГ­ГЁ ГґГ Г©Г«Г 
 	
 		la a0, strbuf
 		
-		jal string_processing		# Обработка считанной строки
+		jal string_processing		# ГЋГЎГ°Г ГЎГ®ГІГЄГ  Г±Г·ГЁГІГ Г­Г­Г®Г© Г±ГІГ°Г®ГЄГЁ
 		
 		print_or_not(t1)
 		
 		la a6, new_str
-		jal create_new_file 		# Создание нового файла
+		jal create_new_file 		# Г‘Г®Г§Г¤Г Г­ГЁГҐ Г­Г®ГўГ®ГЈГ® ГґГ Г©Г«Г 
 	
 		addi s10,s10,1
 		beq s10,  s11,ex
 		j loopp
 		
 	ex:
-		lw ra (sp)		# восстанавливаем ra из стека
-		addi sp sp 4	# восстанавливаем вершину стека
+		lw ra (sp)		# ГўГ®Г±Г±ГІГ Г­Г ГўГ«ГЁГўГ ГҐГ¬ ra ГЁГ§ Г±ГІГҐГЄГ 
+		addi sp sp 4	# ГўГ®Г±Г±ГІГ Г­Г ГўГ«ГЁГўГ ГҐГ¬ ГўГҐГ°ГёГЁГ­Гі Г±ГІГҐГЄГ 
 		ret
 		
