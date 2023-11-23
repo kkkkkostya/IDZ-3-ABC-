@@ -6,9 +6,8 @@
 в заданной ASCII–строке заглавными.
 
 **Решение:**\
-[Код на ассемблере с комментариями](https://github.com/kkkkkostya/IDZ2_ABC/tree/d8a7f76d2475c282c07c3d0477f39f4ccc9361a3/Assembler%20code)\
-[Тестовая программа на Python](https://github.com/kkkkkostya/IDZ2_ABC/blob/dc3924cffe01536f5709c521da26135d72d3b7cf/python_tests.py)\
-[Тест собраны тут](https://github.com/kkkkkostya/IDZ2_ABC/tree/aca2ecf9cbaa613ef26a774db299f27ed4a10e32/tests)
+[Код на ассемблере с комментариями](https://github.com/kkkkkostya/IDZ-3-ABC-/tree/eba835c586b11ba92e165baa8bf7f3904998c4a5/Assembler%20code)\
+[Тест собраны тут](https://github.com/kkkkkostya/IDZ-3-ABC-/tree/803b1e0f99b8944e29a407d5cd8f0dd2e581d6d4/tests)
 
 **Отчет по критериям:**
 
@@ -23,7 +22,7 @@
 * При чтении файла размером, превышающим размер буфера, не происходит падения программы. Программа должна корректно обработать введенный «урезанный» текст.\
 * Результаты тестирования:\
 \
-![Результаты тестирования:](https://github.com/kkkkkostya/IDZ2_ABC/blob/aca2ecf9cbaa613ef26a774db299f27ed4a10e32/tests/res_tests.png)
+![Результаты тестирования:](https://github.com/kkkkkostya/IDZ-3-ABC-/blob/803b1e0f99b8944e29a407d5cd8f0dd2e581d6d4/tests/scrin_test1.png)
 
 6-7: 
 * Внутри функций используются регистровые или локальные (при нехватке) переменные.\
@@ -35,10 +34,10 @@
 * Добавил в программу возможность дополнительного вывода результатов на консоль через запрос пользователя, который решаем выводить на консоль результат преобразования данных с файла или нет.\
 * Реализовал дополнительную тестовую программу с заготовленными тестами для проверки корректности работы программы.
 \
-![Результаты тестирования:](https://github.com/kkkkkostya/IDZ2_ABC/blob/aca2ecf9cbaa613ef26a774db299f27ed4a10e32/tests/res_python_tests.png)
+![Результаты тестирования:](https://github.com/kkkkkostya/IDZ-3-ABC-/blob/803b1e0f99b8944e29a407d5cd8f0dd2e581d6d4/tests/auto_tests.png)
 
 9: 
-* Добавил отдельную [автономную библиотеку](https://github.com/kkkkkostya/IDZ2_ABC/blob/aca2ecf9cbaa613ef26a774db299f27ed4a10e32/Assembler%20code/macrlib.asm) с макросами для реализации ввода, обработки и вывода данных.\
+* Добавил отдельную [автономную библиотеку](https://github.com/kkkkkostya/IDZ-3-ABC-/blob/803b1e0f99b8944e29a407d5cd8f0dd2e581d6d4/Assembler%20code/macro-lib.asm) с макросами для реализации ввода, обработки и вывода данных.\
 * Также реализовал дополнительную тестовую программу, вызывающую выполняемые подпрограммы через макросы.\
 
 10: 
