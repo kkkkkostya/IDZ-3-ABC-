@@ -1,23 +1,23 @@
 .include "macro-lib.asm"	
 
-.eqv	NAME_SIZE 256 				# Размер буфера для имени файла
-.eqv	TEXT_SIZE 4096 				# Размер буфера для текста
+.eqv	NAME_SIZE 256 				# Р Р°Р·РјРµСЂ Р±СѓС„РµСЂР° РґР»СЏ РёРјРµРЅРё С„Р°Р№Р»Р°
+.eqv	TEXT_SIZE 4096 				# Р Р°Р·РјРµСЂ Р±СѓС„РµСЂР° РґР»СЏ С‚РµРєСЃС‚Р°
 
 .data
-prom:         .asciz "Input file name to write: "    			 # Название файла для записи
+prom:         .asciz "Input file name to write: "    			  # РќР°Р·РІР°РЅРёРµ С„Р°Р№Р»Р° РґР»СЏ Р·Р°РїРёСЃРё
 
 .text
 
-.global create_new_file						 	# Создание нового файла
+.global create_new_file						 	# РЎРѕР·РґР°РЅРёРµ РЅРѕРІРѕРіРѕ С„Р°Р№Р»Р°
 create_new_file:
 	    print_n()
 	    print_str (prom) 
-	    read_str(file_out_name, NAME_SIZE)			# Считываем название файла для записи
+	    read_str(file_out_name, NAME_SIZE)			# РЎС‡РёС‚С‹РІР°РµРј РЅР°Р·РІР°РЅРёРµ С„Р°Р№Р»Р° РґР»СЏ Р·Р°РїРёСЃРё
 
-	    # Убрать перевод строки
+	    # РЈР±СЂР°С‚СЊ РїРµСЂРµРІРѕРґ СЃС‚СЂРѕРєРё
 	    li  t4 '\n'
 	    la  t5  file_out_name
-	    mv  t3 t5	# Сохранение начала буфера для проверки на пустую строку
+	    mv  t3 t5					# РЎРѕС…СЂР°РЅРµРЅРёРµ РЅР°С‡Р°Р»Р° Р±СѓС„РµСЂР° РґР»СЏ РїСЂРѕРІРµСЂРєРё РЅР° РїСѓСЃС‚СѓСЋ СЃС‚СЂРѕРєСѓ
 	    
 	loop:
 	    lb	t6  (t5)
@@ -25,12 +25,12 @@ create_new_file:
 	    addi t5 t5 1
 	    b   loop
 	replace:
-	    beq t3 t5 default	# Установка имени введенного файла
+	    beq t3 t5 default				# РЈСЃС‚Р°РЅРѕРІРєР° РёРјРµРЅРё РІРІРµРґРµРЅРЅРѕРіРѕ С„Р°Р№Р»Р°
 	    sb  zero (t5)
-	    mv   a0, t3 	# Имя, введенное пользователем
+	    mv   a0, t3 				# РРјСЏ, РІРІРµРґРµРЅРЅРѕРµ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј
 	    b out
 	default:
-	    la   a0, default_name # Имя файла по умолчанию
+	    la   a0, default_name 			# РРјСЏ С„Р°Р№Р»Р° РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
 	out:
 		li   a7, 1024     	# system call for open file	
     		li   a1, 1        	# Open for writing (flags are 0: read, 1: write)
